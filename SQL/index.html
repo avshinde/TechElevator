@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>SQL - TechElevate</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "SQL";
+        var mkdocs_page_input_path = "SQL.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> TechElevate
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">SQL</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-sql">📘 What is SQL?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#basic-sql-concepts">🧱 Basic SQL Concepts</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-database">1. Database</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-table">2. Table</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#sample-table-employees">📊 Sample Table: Employees</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#select-queries">🔍 SELECT Queries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#get-all-employees">Get all employees:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#get-only-first-and-last-names">Get only First and Last Names:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#filter-employees-from-it-department">Filter employees from IT department:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#employees-with-salary-55000">Employees with salary &gt; 55000:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#other-basic-queries">📋 Other Basic Queries</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#sorting-data">Sorting Data:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#count-of-employees">Count of employees:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#group-by-department">Group by Department:</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#average-salary-by-department">Average Salary by Department:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inserting-data">✍️ Inserting Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#updating-data">📝 Updating Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#deleting-data">❌ Deleting Data</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tips">✅ Tips</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#practice-more">🧠 Practice More</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../MatchRecordFlow/">MatchFlow</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">TechElevate</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">SQL</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="sql-notes-for-beginners">SQL Notes for Beginners</h1>
+<h2 id="what-is-sql">📘 What is SQL?</h2>
+<p>SQL (Structured Query Language) is used to communicate with databases. It's used to store, retrieve, manage, and manipulate data in relational databases like MySQL, PostgreSQL, SQL Server, and Oracle.</p>
+<hr />
+<h2 id="basic-sql-concepts">🧱 Basic SQL Concepts</h2>
+<h3 id="1-database">1. <strong>Database</strong></h3>
+<p>A database is a container that holds tables.</p>
+<h3 id="2-table">2. <strong>Table</strong></h3>
+<p>A table is a collection of rows and columns.</p>
+<hr />
+<h2 id="sample-table-employees">📊 Sample Table: <code>Employees</code></h2>
+<table>
+<thead>
+<tr>
+<th>EmployeeID</th>
+<th>FirstName</th>
+<th>LastName</th>
+<th>Department</th>
+<th>Salary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>John</td>
+<td>Doe</td>
+<td>HR</td>
+<td>50000</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Jane</td>
+<td>Smith</td>
+<td>IT</td>
+<td>60000</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Mike</td>
+<td>Johnson</td>
+<td>IT</td>
+<td>55000</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Lisa</td>
+<td>Wong</td>
+<td>Finance</td>
+<td>70000</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tom</td>
+<td>Brown</td>
+<td>HR</td>
+<td>52000</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="select-queries">🔍 SELECT Queries</h2>
+<h3 id="get-all-employees">Get all employees:</h3>
+<pre><code class="language-sql">SELECT * FROM Employees;
+</code></pre>
+<p><strong>Result:</strong> Returns all rows and columns from the table.</p>
+<h3 id="get-only-first-and-last-names">Get only First and Last Names:</h3>
+<pre><code class="language-sql">SELECT FirstName, LastName FROM Employees;
+</code></pre>
+<h3 id="filter-employees-from-it-department">Filter employees from IT department:</h3>
+<pre><code class="language-sql">SELECT * FROM Employees
+WHERE Department = 'IT';
+</code></pre>
+<h3 id="employees-with-salary-55000">Employees with salary &gt; 55000:</h3>
+<pre><code class="language-sql">SELECT * FROM Employees
+WHERE Salary &gt; 55000;
+</code></pre>
+<hr />
+<h2 id="other-basic-queries">📋 Other Basic Queries</h2>
+<h3 id="sorting-data">Sorting Data:</h3>
+<pre><code class="language-sql">SELECT * FROM Employees
+ORDER BY Salary DESC;
+</code></pre>
+<h3 id="count-of-employees">Count of employees:</h3>
+<pre><code class="language-sql">SELECT COUNT(*) FROM Employees;
+</code></pre>
+<h3 id="group-by-department">Group by Department:</h3>
+<pre><code class="language-sql">SELECT Department, COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department;
+</code></pre>
+<h3 id="average-salary-by-department">Average Salary by Department:</h3>
+<pre><code class="language-sql">SELECT Department, AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department;
+</code></pre>
+<hr />
+<h2 id="inserting-data">✍️ Inserting Data</h2>
+<pre><code class="language-sql">INSERT INTO Employees (EmployeeID, FirstName, LastName, Department, Salary)
+VALUES (6, 'Emma', 'Stone', 'Marketing', 58000);
+</code></pre>
+<hr />
+<h2 id="updating-data">📝 Updating Data</h2>
+<pre><code class="language-sql">UPDATE Employees
+SET Salary = 62000
+WHERE FirstName = 'Tom';
+</code></pre>
+<hr />
+<h2 id="deleting-data">❌ Deleting Data</h2>
+<pre><code class="language-sql">DELETE FROM Employees
+WHERE EmployeeID = 6;
+</code></pre>
+<hr />
+<h2 id="tips">✅ Tips</h2>
+<ul>
+<li>SQL is <strong>case-insensitive</strong>.</li>
+<li>Always backup your data before <code>DELETE</code> or <code>UPDATE</code>.</li>
+<li>Use <code>WHERE</code> to avoid updating or deleting the whole table.</li>
+</ul>
+<hr />
+<h2 id="practice-more">🧠 Practice More</h2>
+<p>Try to create your own table and run these queries:</p>
+<pre><code class="language-sql">CREATE TABLE Students (
+  StudentID INT,
+  Name VARCHAR(50),
+  Grade INT
+);
+
+INSERT INTO Students VALUES (1, 'Alice', 90), (2, 'Bob', 85);
+</code></pre>
+<p>Then:</p>
+<pre><code class="language-sql">SELECT * FROM Students;
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../MatchRecordFlow/" class="btn btn-neutral float-right" title="MatchFlow">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../MatchRecordFlow/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
