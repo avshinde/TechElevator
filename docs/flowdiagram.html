@@ -1,0 +1,207 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Rule Configuration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background-color: #f4f4f9;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+        }
+        .merge-rule {
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .merge-rule label {
+            font-weight: bold;
+        }
+        .merge-rule input, .merge-rule textarea {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        .merge-rule input[type="text"] {
+            width: 200px;
+        }
+        .merge-rule textarea {
+            width: 300px;
+            height: 40px;
+            resize: none;
+        }
+        .toggle-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .toggle-container label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+        }
+        .columns {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            text-align: center;
+            color: #333;
+        }
+        select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+        .attributes, .params {
+            margin-top: 15px;
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        .save-btn {
+            width: 10%;
+            padding: 10px;
+            background: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .save-btn:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Merge Rule Header Section -->
+        <div class="merge-rule">
+            <label>Rule Name:</label>
+            <input type="text" id="ruleName" placeholder="Enter Rule Name">
+
+            <label>Description:</label>
+           <input type="text" id="ruleDescription" placeholder="Enter Description"></textarea>
+
+            <div class="toggle-container">
+                <label>Set as Active: <input type="checkbox" id="setActive"></label>
+                <label>Delete Matching Records: <input type="checkbox" id="deleteRecords"></label>
+            </div>
+        </div>
+
+        <!-- Record and Attribute Selection Columns -->
+        <div class="columns">
+            <!-- Record Selection Column -->
+            <div class="column">
+                <h3>Record Selection Process</h3>
+                <label>Auto Selection Process:</label>
+                <select id="autoSelection" onchange="updateRecordParams()">
+                     <option value="HighScore">HighScore</option>
+                    <option value="MostlyNew">MostlyNew</option>
+                    <option value="MostlyMerge">MostlyMerge</option>
+                    <option value="Precedence">Precedence</option>
+                    <option value="CompleteData">CompleteData</option>
+                </select>
+
+                <label>Conflict Resolution Process:</label>
+                <select id="conflictResolution" onchange="updateRecordParams()">
+                    <option value="HighScore">HighScore</option>
+                    <option value="MostlyNew">MostlyNew</option>
+                    <option value="MostlyMerge">MostlyMerge</option>
+                    <option value="Precedence">Precedence</option>
+                    <option value="CompleteData">CompleteData</option>
+                </select>
+
+                <label>Select Process:</label>
+                <select id="recordSelection" onchange="updateRecordParams()">
+                    <option value="HighScore">HighScore</option>
+                    <option value="MostlyNew">MostlyNew</option>
+                    <option value="MostlyMerge">MostlyMerge</option>
+                    <option value="Precedence">Precedence</option>
+                    <option value="CompleteData">CompleteData</option>
+                </select>
+                <div class="params" id="recordParams"><p><strong>AttributeName:</strong> ModDate</p><p><strong>PrecedenceMode:</strong> PrecedenceBased</p><p><strong>Order of Values:</strong> <select multiple=""><option>Primary</option><option>Secondary</option><option>Tertiary</option></select></p></div>
+            </div>
+            
+            <!-- Attribute Selection Column -->
+            <div class="column">
+                <h3>Attribute Selection Process</h3>
+                <label>Select Process:</label>
+                <select id="attributeSelection" onchange="updateAttributeList()">
+                    <option value="CompleteData">CompleteData</option>
+                    <option value="MostlyNew">MostlyNew</option>
+                    <option value="MostlyMerge">MostlyMerge</option>
+                </select>
+                <div class="attributes" id="attributeList"><p><strong>Attributes:</strong></p><select multiple=""></select><option>PATIENT:FirstName</option><option>PATIENT:LastName</option><option>PATIENT:MiddleName</option></div>
+            </div>
+        </div>
+
+        <!-- Save Button -->
+        <button class="save-btn" style="
+    margin-left: 40%;
+">Save</button>
+    </div>
+
+    <script>
+        function updateRecordParams() {
+            let selection = document.getElementById("recordSelection").value;
+            let paramsDiv = document.getElementById("recordParams");
+            paramsDiv.innerHTML = "";
+            if (selection === "MostlyNew") {
+                paramsDiv.innerHTML = "<p><strong>AttributeName:</strong> ProductID</p><p><strong>SortOrder:</strong> OLD</p>";
+            } else if (selection === "MostlyMerge") {
+                paramsDiv.innerHTML = "<p><strong>CheckMode:</strong> ModVersion</p>";
+            } else if (selection === "Precedence") {
+                paramsDiv.innerHTML = "<p><strong>AttributeName:</strong> ModDate</p>" +
+                                      "<p><strong>PrecedenceMode:</strong> PrecedenceBased</p>" +
+                                      "<p><strong>Order of Values:</strong> <select multiple><option>Primary</option><option>Secondary</option><option>Tertiary</option></select></p>";
+            } else if (selection === "CompleteData") {
+                paramsDiv.innerHTML = "<p><strong>Allowed Attributes:</strong> <select multiple><option>PERSONPROFILE:FirstName</option><option>PERSONPROFILE:LastName</option><option>Email:EmailAddress</option><option>Phone:PHONE</option></select></p>";
+            }
+        }
+
+        function updateAttributeList() {
+            let selection = document.getElementById("attributeSelection").value;
+            let attributesDiv = document.getElementById("attributeList");
+            attributesDiv.innerHTML = "";
+            let attributes = {
+                "CompleteData": ["PATIENT:FirstName", "PATIENT:LastName", "PATIENT:MiddleName"],
+                "MostlyNew": ["PATIENT:PrimaryAddressLine1", "PATIENT:PrimaryAddressLine2", "PATIENT:PrimaryCity", "PATIENT:PrimaryCountry"],
+                "MostlyMerge": ["PATIENT:PrimaryPostalCode"]
+            };
+            if (attributes[selection]) {
+                attributesDiv.innerHTML = "<p><strong>Attributes:</strong></p>";
+                attributesDiv.innerHTML += "<select multiple>";
+                attributes[selection].forEach(attr => {
+                    attributesDiv.innerHTML += `<option>${attr}</option>`;
+                });
+                attributesDiv.innerHTML += "</select>";
+            }
+        }
+    </script>
+
+
+</body></html>

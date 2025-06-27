@@ -2,5 +2,6 @@ site_name: TechElevate
 
 nav:
   - Home: index.md
-  - RestAPI: RestAPI.md
+
+  
 theme: readthedocs 
