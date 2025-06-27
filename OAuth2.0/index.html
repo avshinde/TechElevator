@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>OAuth 2.0 Overview - TechElevate</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "OAuth 2.0 Overview";
+        var mkdocs_page_input_path = "OAuth2.0.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> TechElevate
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">TechElevate</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">OAuth 2.0 Overview</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="oauth-20-overview">OAuth 2.0 Overview</h1>
+<p>OAuth 2.0 can be thought of as a <strong>digital handshake</strong> between the app, service, and user, with everyone agreeing on what is shared.</p>
+<p>It's an <strong>authorization framework</strong> that enables applications to access a user’s data on another service (like Facebook or GitHub) <strong>without sharing the user’s password</strong>.</p>
+<p>Now that we’ve covered what it is, let’s dive into how it works.</p>
+<hr />
+<h2 id="oauth-20-process-overview">🔸 OAuth 2.0 Process Overview</h2>
+<p>The process generally follows <strong>6 steps</strong> with <strong>4 components</strong> typically involved:</p>
+<ol>
+<li><strong>Client</strong> (app wanting access)</li>
+<li><strong>Resource Owner</strong> (user)</li>
+<li><strong>Authorization Server</strong></li>
+<li><strong>Resource Server</strong></li>
+</ol>
+<p>To understand the process, let’s take a look at how a game would connect to a player’s <strong>Facebook</strong> account.</p>
+<hr />
+<h2 id="oauth-20-workflow-example-game-connecting-to-facebook">📱 OAuth 2.0 Workflow Example: Game Connecting to Facebook</h2>
+<h3 id="step-1-request-access"><strong>Step 1: Request Access</strong></h3>
+<ul>
+<li>Within the game (<strong>client</strong>), the player (<strong>user</strong>) clicks on a “connect with Facebook” button to link their profile and find friends.</li>
+</ul>
+<h3 id="step-2-redirect-to-service"><strong>Step 2: Redirect to Service</strong></h3>
+<ul>
+<li>The game redirects the player to Facebook’s (<strong>service’s</strong>) login page.</li>
+</ul>
+<h3 id="step-3-permission-request"><strong>Step 3: Permission Request</strong></h3>
+<ul>
+<li>After logging in, the data that the game is requesting access to will be shown to the player, who can either allow or deny the access.</li>
+</ul>
+<h3 id="step-4-authorization-code"><strong>Step 4: Authorization Code</strong></h3>
+<ul>
+<li>If the player gives their approval, Facebook redirects the player back to the game with an <strong>authorization code</strong> (from the <strong>authorization server</strong>). The code is a temporary credential that proves the player’s consent.</li>
+</ul>
+<h3 id="step-5-exchange-code-for-token"><strong>Step 5: Exchange Code for Token</strong></h3>
+<ul>
+<li>The game now sends the <strong>authorization code</strong> along with its own identification to Facebook’s server in the background. Facebook identifies the authorization code and the game’s identity and returns an <strong>access token</strong>.</li>
+</ul>
+<h3 id="step-6-use-the-token"><strong>Step 6: Use the Token</strong></h3>
+<ul>
+<li>The game can now use the <strong>access token</strong> to request the agreed-upon data from Facebook (<strong>resource server</strong>), like the player's friends list.</li>
+</ul>
+<hr />
+<h2 id="key-points">🔑 Key Points</h2>
+<p>In this process, the player’s <strong>Facebook credentials</strong> were never shared, but the game was able to access the agreed-upon player data from Facebook. This is what <strong>OAuth 2.0</strong> facilitates; allowing third-party applications to access data from services in a secure manner without sharing credentials.</p>
+<hr />
+<h2 id="oauth-20-grant-types">🎯 OAuth 2.0 Grant Types</h2>
+<p>OAuth 2.0 provides multiple <strong>grant types</strong> to cater to different use cases. These grant types dictate how the application gets an access token.</p>
+<p>For most web applications, the <strong>Authorization Code Grant</strong> is the recommended and most secure method to obtain access tokens.</p>
+<h2 id="summary-of-oauth-20-grant-types"><strong>Summary of OAuth 2.0 Grant Types</strong></h2>
+<table>
+<thead>
+<tr>
+<th>Grant Type</th>
+<th>Use Case</th>
+<th>Security</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Authorization Code Grant</strong></td>
+<td>Web applications (server-side)</td>
+<td><strong>Most secure</strong>, uses authorization code for token exchange</td>
+</tr>
+<tr>
+<td><strong>Implicit Grant</strong></td>
+<td>Single-page applications (client-side)</td>
+<td>Less secure, access token is exposed in the URL</td>
+</tr>
+<tr>
+<td><strong>Resource Owner Password Credentials Grant</strong></td>
+<td>Trusted applications</td>
+<td><strong>Less secure</strong>, user credentials shared directly</td>
+</tr>
+<tr>
+<td><strong>Client Credentials Grant</strong></td>
+<td>Machine-to-machine communication</td>
+<td>Secure, client uses client ID and secret</td>
+</tr>
+<tr>
+<td><strong>Refresh Token Grant</strong></td>
+<td>Token renewal</td>
+<td>Secure, allows long-lived sessions without re-authentication</td>
+</tr>
+<tr>
+<td><strong>Device Authorization Grant</strong></td>
+<td>Devices with limited input capabilities</td>
+<td>Secure for devices like smart TVs, gaming consoles</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

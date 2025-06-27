@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>🔹 Load Balancing – Advanced Interview Preparation Notes - TechElevate</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\ud83d\udd39 Load Balancing \u2013 Advanced Interview Preparation Notes";
+        var mkdocs_page_input_path = "LoadBalancing.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> TechElevate
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">TechElevate</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">🔹 Load Balancing – Advanced Interview Preparation Notes</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="load-balancing-advanced-interview-preparation-notes">🔹 Load Balancing – Advanced Interview Preparation Notes</h1>
+<hr />
+<h2 id="what-is-load-balancing">✅ What is Load Balancing?</h2>
+<p>Load Balancing is a method of <strong>distributing incoming network traffic across multiple backend servers</strong> to ensure:</p>
+<ul>
+<li>High availability</li>
+<li>Fault tolerance</li>
+<li>Scalability</li>
+<li>Optimized resource utilization</li>
+</ul>
+<hr />
+<h2 id="core-concepts">🔧 Core Concepts</h2>
+<table>
+<thead>
+<tr>
+<th>Concept</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Server Pool</strong></td>
+<td>Group of backend servers that share the load.</td>
+</tr>
+<tr>
+<td><strong>Health Checks</strong></td>
+<td>Periodic checks to ensure backend servers are up.</td>
+</tr>
+<tr>
+<td><strong>Session Persistence (Sticky Sessions)</strong></td>
+<td>Ties a user session to a specific server.</td>
+</tr>
+<tr>
+<td><strong>Failover</strong></td>
+<td>Automatically reroutes traffic if a server fails.</td>
+</tr>
+<tr>
+<td><strong>DNS Load Balancing</strong></td>
+<td>Uses DNS resolution to distribute load.</td>
+</tr>
+<tr>
+<td><strong>Reverse Proxy</strong></td>
+<td>Often used as a load balancer in front of application servers.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="load-balancing-algorithms">⚙️ Load Balancing Algorithms</h2>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Round Robin</strong></td>
+<td>Equal distribution; good for similar server configs.</td>
+</tr>
+<tr>
+<td><strong>Least Connections</strong></td>
+<td>Routes to the server with the fewest active connections.</td>
+</tr>
+<tr>
+<td><strong>IP Hash</strong></td>
+<td>Based on client IP for sticky sessions.</td>
+</tr>
+<tr>
+<td><strong>Weighted Round Robin / Least Connections</strong></td>
+<td>Prioritizes more powerful servers.</td>
+</tr>
+<tr>
+<td><strong>Random</strong></td>
+<td>Randomly distributes to available servers.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="architecture-real-world-use-cases">📐 Architecture &amp; Real-World Use Cases</h2>
+<h3 id="scenario-1-web-application-3-tier-architecture">🔸 Scenario 1: Web Application (3-Tier Architecture)</h3>
+<ul>
+<li>Client → Nginx/HAProxy Load Balancer → App Servers → DB</li>
+<li>Add auto-scaling groups in cloud environments (AWS/GCP/Azure)</li>
+</ul>
+<h3 id="scenario-2-microservices-with-api-gateway">🔸 Scenario 2: Microservices with API Gateway</h3>
+<ul>
+<li>Client → API Gateway (with built-in load balancing) → Microservices</li>
+<li>Tools: Kong, Istio, AWS API Gateway</li>
+</ul>
+<hr />
+<h2 id="tools-technologies">🚀 Tools &amp; Technologies</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>Software-based L4/L7 load balancer</td>
+</tr>
+<tr>
+<td><strong>HAProxy</strong></td>
+<td>High-performance L4/L7 load balancer</td>
+</tr>
+<tr>
+<td><strong>AWS ELB (ALB/NLB/CLB)</strong></td>
+<td>Cloud-managed load balancing</td>
+</tr>
+<tr>
+<td><strong>Kubernetes Ingress Controller</strong></td>
+<td>Load balancing for K8s services</td>
+</tr>
+<tr>
+<td><strong>Istio Envoy</strong></td>
+<td>Sidecar load balancing in service mesh</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="hands-on-experience-checklist">🧪 Hands-on Experience Checklist</h2>
+<p>✅ Configure <strong>Nginx load balancer</strong> for multiple app servers<br />
+✅ Use <strong>HAProxy</strong> to balance HTTP and TCP traffic<br />
+✅ Implement <strong>AWS ALB with ECS/EKS</strong><br />
+✅ Deploy <strong>Kubernetes Ingress</strong> for service routing<br />
+✅ Use <strong>Terraform or CloudFormation</strong> to provision load balancers<br />
+✅ Configure <strong>health checks</strong> and <strong>sticky sessions</strong><br />
+✅ Benchmark with tools like <strong>Apache Benchmark</strong>, <strong>JMeter</strong>, or <strong>Locust</strong></p>
+<hr />
+<h2 id="security-considerations">🔐 Security Considerations</h2>
+<ul>
+<li>Use <strong>HTTPS termination</strong> at Load Balancer</li>
+<li>Enable <strong>Web Application Firewall (WAF)</strong></li>
+<li>Protect against <strong>DDoS</strong> (e.g., via AWS Shield)</li>
+<li>Implement <strong>rate limiting</strong></li>
+</ul>
+<hr />
+<h2 id="interview-angle-sample-questions">🧠 Interview Angle – Sample Questions</h2>
+<h3 id="q1-how-would-you-design-a-load-balanced-system-for-millions-of-users">Q1. How would you design a load-balanced system for millions of users?</h3>
+<ul>
+<li>Discuss global load balancing (e.g., Route 53 + Cloudflare), CDN, regional ALBs, and auto-scaling.</li>
+</ul>
+<h3 id="q2-how-do-you-handle-sticky-sessions-in-stateless-microservices">Q2. How do you handle sticky sessions in stateless microservices?</h3>
+<ul>
+<li>Use JWT tokens, Redis-backed session storage, or consistent hashing.</li>
+</ul>
+<h3 id="q3-whats-the-difference-between-layer-4-and-layer-7-load-balancing">Q3. What’s the difference between Layer 4 and Layer 7 load balancing?</h3>
+<ul>
+<li>L4: TCP/UDP-level, faster, no app-layer logic  </li>
+<li>L7: HTTP-level, allows content-based routing, SSL termination</li>
+</ul>
+<h3 id="q4-how-do-you-handle-server-failure-in-a-load-balanced-setup">Q4. How do you handle server failure in a load-balanced setup?</h3>
+<ul>
+<li>Health checks, remove failed node from pool, auto-replace in cloud infra</li>
+</ul>
+<h3 id="q5-how-does-a-load-balancer-affect-scalability-and-availability">Q5. How does a load balancer affect scalability and availability?</h3>
+<ul>
+<li>Horizontal scalability, fault tolerance, enables zero-downtime deployments</li>
+</ul>
+<hr />
+<h2 id="diagrams-you-can-draw">📊 Diagrams You Can Draw</h2>
+<ol>
+<li><strong>Load Balancer in front of App Servers</strong></li>
+<li><strong>High Availability Setup with Two Load Balancers (Active-Passive)</strong></li>
+<li><strong>Kubernetes Ingress + LoadBalancer Service</strong></li>
+</ol>
+              
+            </div>
+          </div><footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
